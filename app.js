@@ -35,6 +35,7 @@ submitBtn.addEventListener("click", () => {
 
   if (!pin) {
     alert("Please generate pin first.");
+    pinMatchInput.value = "";
   } else if (!pinMatch) {
     alert("Please inter your 4-digit pin");
   }
@@ -43,6 +44,7 @@ submitBtn.addEventListener("click", () => {
 
     pinInput.value = "";
     pinMatchInput.value = "";
+    action = 0;
   } else if (pin !== pinMatch && pinMatch && pin) {
     ++action;
     if (action == 1) {
@@ -60,11 +62,11 @@ submitBtn.addEventListener("click", () => {
   }
 });
 // display message
-function showMessage(event) {
+function showMessage(isMatch) {
   const success = document.querySelector(".success");
   const error = document.querySelector(".error");
 
-  if (event) {
+  if (isMatch) {
     success.style.display = "block";
     error.style.display = "none";
   } else {
